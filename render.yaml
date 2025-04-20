@@ -1,9 +1,11 @@
+
+
 services:
   - type: web
-    name: fog_prediction_app
-    env: python
-    buildCommand: ""
-    startCommand: python app.py
+    name: fog-prediction-app
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
     envVars:
-      - key: FLASK_ENV
-        value: development
+      - key: PORT
+        value: 10000
